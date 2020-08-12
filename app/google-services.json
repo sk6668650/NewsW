@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "749348469007",
+    "firebase_url": "https://newswala-d7808.firebaseio.com",
+    "project_id": "newswala-d7808",
+    "storage_bucket": "newswala-d7808.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749348469007:android:cb70bf0688584aac48267a",
+        "android_client_info": {
+          "package_name": "com.satyam.newswala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749348469007-l660e8aalrq501jn68sdasngb7d7r330.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.satyam.newswala",
+            "certificate_hash": "8c7ffba7a021c1c0fd9e3d6c021aaca9ffd522a4"
+          }
+        },
+        {
+          "client_id": "749348469007-0eedd7a2rsqjm3belipollciuv4aq3nu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxx_amZ70GohV8X2YcTBaUdR2lW2qB7ZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749348469007-0eedd7a2rsqjm3belipollciuv4aq3nu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

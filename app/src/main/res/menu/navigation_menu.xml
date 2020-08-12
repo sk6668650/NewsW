@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <item android:id="@+id/item1"
+        android:enabled="true"
+        android:title="India"
+
+        android:icon="@drawable/indiaa"></item>
+
+
+    <item android:id="@+id/item2"
+        android:title="World"
+
+        android:enabled="true"
+        android:icon="@drawable/world"></item>
+
+
+    <item android:id="@+id/item4"
+        android:title="Hot"
+        android:enabled="true"
+
+        android:icon="@drawable/ic_whatshot_black_24dp"></item>
+
+    <item android:id="@+id/item5"
+        android:title="Account"
+        android:enabled="true"
+
+        android:icon="@drawable/acc"></item>
+
+
+
+</menu>

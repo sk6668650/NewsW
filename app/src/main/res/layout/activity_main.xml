@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:background="#000000"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@drawable/grad"
+        android:id="@+id/toolbar"
+        app:collapseIcon="@drawable/ic_arrow_back_black_24dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="175dp"
+            android:fontFamily="@font/berkshire_swash"
+            android:text="NewsWala"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold"></TextView>
+
+             </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:scrollbars="none"
+            android:layout_height="wrap_content">
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear"
+        android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sports"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/grade"
+                android:padding="10dp"
+                android:text="sports"
+                android:textAllCaps="false"
+                android:fontFamily="@font/cambo"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold">
+
+            </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="economics"
+            android:layout_weight="1"
+            android:layout_marginTop="4dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/cambo"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="4dp"
+            android:padding="10dp"
+            android:background="@drawable/grade"
+
+            android:id="@+id/economics"></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="tech"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/cambo"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/grade"
+            android:id="@+id/tech"></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="politics"
+            android:background="@drawable/grade"
+            android:fontFamily="@font/cambo"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="4dp"
+            android:textAllCaps="false"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:id="@+id/politics"></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="entertainment"
+            android:background="@drawable/grade"
+            android:fontFamily="@font/cambo"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="4dp"
+            android:textAllCaps="false"
+            android:layout_marginRight="4dp"
+
+            android:id="@+id/entertainment"></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="science"
+            android:background="@drawable/grade"
+            android:textAllCaps="false"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/cambo"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginRight="4dp"
+
+            android:id="@+id/science"></Button>
+
+    </LinearLayout>
+        </HorizontalScrollView>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/setFragment">
+        </FrameLayout>
+</LinearLayout>
+</LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:id="@+id/nav"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/grad"
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:layout_height="50dp" />
+
+
+
+
+
+
+
+</LinearLayout>
+
+
+
+

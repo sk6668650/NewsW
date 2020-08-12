@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NewsWala</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aboutUs">NewsWala \n\nThis app keeps you updated with the latest news from all across the world. we serve you information from the leading news portal with hundred percent credibility.\nThis app was made for the development purpose only and we are not getting benefited by any mean.\nThis Application uses few open source api and tools for functioning like NewsApi.org\n\nDeveloped by Satyam kumar.\n\nThank you </string>
+</resources>

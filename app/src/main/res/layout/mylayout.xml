@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="Third Party Tools"></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Newsapi.org"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="start"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. ChipNavigation."
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="start"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="https://github.com/ismaeldivita/chip-navigation-bar"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. Glide for Pictures."
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="start"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        ></TextView>
+
+
+</LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</FrameLayout>
