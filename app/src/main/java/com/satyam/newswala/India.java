@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 public class India extends Fragment {
     RequestQueue requestQueue;
     RecyclerView recyclerView;
+
     ArrayList<String> one,link,web,content,description,publisher;
 
 
@@ -43,6 +45,8 @@ public class India extends Fragment {
         view =  inflater.inflate(R.layout.fragment_india, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerView);
+
+
 
         Bundle bundle = new Bundle();
         bundle.putInt("newKey",1);
@@ -101,6 +105,8 @@ public class India extends Fragment {
 
                             recyclerView.setAdapter(a);
                             recyclerView.setLayoutManager(layoutManager);
+
+
                         }
 
 
@@ -118,6 +124,7 @@ public class India extends Fragment {
 
 
         requestQueue.add(jsonObjectRequest);
+
 
 
 

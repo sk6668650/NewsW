@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,8 @@ public class FullArticle extends AppCompatActivity
     ImageView imageView;
     TextView textView,textView2,textView3;
     WebView webView;
+    ProgressBar progressBar;
+    LinearLayout getLinearLayout;
     View v;
     String data1,data2,data3,data4,data5,data6;
 
@@ -36,11 +41,14 @@ public class FullArticle extends AppCompatActivity
         textView  = findViewById(R.id.title1);
         textView2 = findViewById(R.id.content1);
         textView3 = findViewById(R.id.textPub);
+        progressBar = findViewById(R.id.progress);
+        getLinearLayout = findViewById(R.id.linWeb);
         webView   = findViewById(R.id.webview);
         linearLayout = findViewById(R.id.publisherlay);
         v = findViewById(R.id.linee);
         View BottomSheet = findViewById(R.id.bottom_sheet);
 
+        getLinearLayout.setVisibility(View.GONE);
         getData();
         setData();
         bottomSheetBehavior = BottomSheetBehavior.from(BottomSheet);
@@ -167,7 +175,25 @@ public class FullArticle extends AppCompatActivity
        // WebSettingsCompat.setForceDark(webView.getSettings(),WebSettingsCompat.FORCE_DARK_ON);
         webView.getSettings().setLoadsImagesAutomatically(true);
        // webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        webView.setWebViewClient(new WebViewClient());
+
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                progressBar.setVisibility(View.GONE);
+                getLinearLayout.setVisibility(View.VISIBLE);
+
+                super.onPageFinished(view, url);
+            }
+        });
+
+
         webView.loadUrl(data3);
 
 

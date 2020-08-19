@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +68,7 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder>
     final String ooo5 = (String)  pub.get(position);
 
 
+
     if(image.get(position)==null | des.get(position)==null | cont.get(position)==null)
     {
       holder.cardView.setVisibility(View.GONE);
@@ -115,11 +117,13 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder>
     CardView cardView;
     LinearLayout frameLayout;
 
+
     public MyViewHolder(@NonNull View itemView)
     {
       super(itemView);
       textView2 = itemView.findViewById(R.id.publisher);
       textView = itemView.findViewById(R.id.title);
+
       frameLayout = itemView.findViewById(R.id.root);
       cardView   = itemView.findViewById(R.id.cardNews);
       imageView = itemView.findViewById(R.id.imageView);
