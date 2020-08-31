@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.newscategory;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -23,6 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.data.NewData;
+import com.satyam.newswala.apiKey.News;
+import com.satyam.newswala.R;
+import com.satyam.newswala.adapters.CenterZoomLayoutManager;
+import com.satyam.newswala.adapters.NewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

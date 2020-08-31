@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.fragments;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.satyam.newswala.R;
 
 public class About extends Fragment {
 

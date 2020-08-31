@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.newscategory;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -23,6 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.data.NewData;
+import com.satyam.newswala.apiKey.News;
+import com.satyam.newswala.R;
+import com.satyam.newswala.adapters.CenterZoomLayoutManager;
+import com.satyam.newswala.adapters.NewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +35,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CategoryNewsEco extends AppCompatActivity {
+public class CategoryNewsSci extends AppCompatActivity {
 
     RequestQueue requestQueue;
     RecyclerView recyclerView;
@@ -41,8 +46,7 @@ public class CategoryNewsEco extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_news);
-
-       showToast();
+        showToast();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -54,7 +58,7 @@ public class CategoryNewsEco extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.ECONOMICS, null,
+                News.SCIENCE, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response)
@@ -65,6 +69,7 @@ public class CategoryNewsEco extends AppCompatActivity {
                         content = new ArrayList<>();
                         description = new ArrayList<>();
                         publisher   = new ArrayList<>();
+
 
                         try
                         {
@@ -78,12 +83,12 @@ public class CategoryNewsEco extends AppCompatActivity {
                                 content.add(jsonObject.getString("content"));
                                 description.add(jsonObject.getString("description"));
 
-
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 String one = jsonObject1.getString("source");
                                 Gson gson = new Gson();
                                 NewData newData = gson.fromJson(one,NewData.class);
                                 publisher.add(newData.getName());
+
 
                             }
 

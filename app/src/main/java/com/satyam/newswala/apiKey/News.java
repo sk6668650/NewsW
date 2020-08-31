@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.apiKey;
 
 public class News {
 

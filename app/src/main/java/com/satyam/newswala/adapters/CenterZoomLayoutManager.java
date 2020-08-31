@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.adapters;
 
 
 import android.content.Context;

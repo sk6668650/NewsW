@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +21,21 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.satyam.newswala.R;
+import com.satyam.newswala.fragments.Account;
+import com.satyam.newswala.fragments.Hot;
+import com.satyam.newswala.fragments.India;
+import com.satyam.newswala.fragments.Searched;
+import com.satyam.newswala.fragments.World;
+import com.satyam.newswala.newscategory.CategoryNews;
+import com.satyam.newswala.newscategory.CategoryNewsEco;
+import com.satyam.newswala.newscategory.CategoryNewsEnter;
+import com.satyam.newswala.newscategory.CategoryNewsPol;
+import com.satyam.newswala.newscategory.CategoryNewsSci;
+import com.satyam.newswala.newscategory.CategoryNewsTech;
 
 
 public class MainActivity extends AppCompatActivity
@@ -63,7 +73,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,CategoryNews.class);
+                Intent i = new Intent(MainActivity.this, CategoryNews.class);
                 startActivity(i);
 
             }
@@ -73,7 +83,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,CategoryNewsEco.class);
+                Intent i = new Intent(MainActivity.this, CategoryNewsEco.class);
                 startActivity(i);
 
             }
@@ -83,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,CategoryNewsTech.class);
+                Intent i = new Intent(MainActivity.this, CategoryNewsTech.class);
                 startActivity(i);
 
             }
@@ -93,7 +103,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,CategoryNewsPol.class);
+                Intent i = new Intent(MainActivity.this, CategoryNewsPol.class);
                 startActivity(i);
 
             }
@@ -103,7 +113,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,CategoryNewsEnter.class);
+                Intent i = new Intent(MainActivity.this, CategoryNewsEnter.class);
                 startActivity(i);
 
             }
@@ -113,7 +123,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,CategoryNewsSci.class);
+                Intent i = new Intent(MainActivity.this, CategoryNewsSci.class);
                 startActivity(i);
 
             }

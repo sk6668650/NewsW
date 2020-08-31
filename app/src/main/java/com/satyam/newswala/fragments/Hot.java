@@ -1,20 +1,16 @@
-package com.satyam.newswala;
+package com.satyam.newswala.fragments;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,6 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.apiKey.News;
+import com.satyam.newswala.R;
+import com.satyam.newswala.adapters.adapter;
+import com.satyam.newswala.data.NewData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,30 +30,27 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CategoryNewsTech extends AppCompatActivity {
-
+public class Hot extends Fragment {
     RequestQueue requestQueue;
     RecyclerView recyclerView;
     ArrayList<String> one,link,web,content,description,publisher;
 
 
+    View view;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_news);
-        showToast();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.BLACK);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        recyclerView = findViewById(R.id.newRecycler);
+         view = inflater.inflate(R.layout.fragment_india, container, false);
+        getActivity().setTitle("Hot");
+        Bundle bundle = new Bundle();
+        bundle.putInt("newKey",3);
+        recyclerView = view.findViewById(R.id.recyclerView);
 
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue = Volley.newRequestQueue(getContext());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.TECH, null,
+                News.HOT, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response)
@@ -64,7 +61,6 @@ public class CategoryNewsTech extends AppCompatActivity {
                         content = new ArrayList<>();
                         description = new ArrayList<>();
                         publisher   = new ArrayList<>();
-
 
                         try
                         {
@@ -94,16 +90,17 @@ public class CategoryNewsTech extends AppCompatActivity {
                         {
                             e.printStackTrace();
                         }
-                        CenterZoomLayoutManager centerZoomLayoutManager =
-                                new CenterZoomLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
-                         NewAdapter a = new NewAdapter(getApplicationContext(),link,one,web,content,description,publisher);
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.VERTICAL,false);
+                        adapter a = new adapter(getContext(),link,one,web,content,description,publisher);
                         if(a.getItemCount() == 0)
                         {
-                            Toast.makeText(getApplicationContext(), "empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "empty", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             recyclerView.setAdapter(a);
-                            recyclerView.setLayoutManager(centerZoomLayoutManager);
+                            recyclerView.setLayoutManager(layoutManager);
                         }
 
 
@@ -123,16 +120,6 @@ public class CategoryNewsTech extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
 
-
-    }
-
-    public void showToast() {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast,(ViewGroup) findViewById(R.id.toast));
-        Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.BOTTOM,0,0);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(layout);
-        toast.show();
+        return view;
     }
 }

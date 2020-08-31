@@ -1,15 +1,16 @@
-package com.satyam.newswala;
+package com.satyam.newswala.fragments;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.apiKey.News;
+import com.satyam.newswala.R;
+import com.satyam.newswala.adapters.adapter;
+import com.satyam.newswala.data.NewData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,8 +30,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+public class World extends Fragment {
 
-public class Searched extends Fragment {
     RequestQueue requestQueue;
     RecyclerView recyclerView;
     ArrayList<String> one,link,web,content,description,publisher;
@@ -36,17 +41,17 @@ public class Searched extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_searched, container, false);
-        assert getArguments() != null;
-        final String query = getArguments().getString("Search");
 
-        getActivity().setTitle("Searched");
+         view = inflater.inflate(R.layout.fragment_india, container, false);
+        getActivity().setTitle("World");
+        Bundle bundle = new Bundle();
+        bundle.putInt("newKey",2);
         recyclerView = view.findViewById(R.id.recyclerView);
 
         requestQueue = Volley.newRequestQueue(getContext());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.CATEGORY+query+News.API_KEY, null,
+                News.WORLD, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response)
@@ -57,6 +62,7 @@ public class Searched extends Fragment {
                         content = new ArrayList<>();
                         description = new ArrayList<>();
                         publisher   = new ArrayList<>();
+
 
                         try
                         {
@@ -76,7 +82,6 @@ public class Searched extends Fragment {
                                 NewData newData = gson.fromJson(one,NewData.class);
                                 publisher.add(newData.getName());
 
-
                             }
 
                         }
@@ -88,13 +93,12 @@ public class Searched extends Fragment {
                         }
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
                                 LinearLayoutManager.VERTICAL,false);
-                        SearchedAdapter a = new SearchedAdapter(getContext(),link,one,web,content,description,publisher);
+                        adapter a = new adapter(getContext(),link,one,web,content,description,publisher);
                         if(a.getItemCount() == 0)
                         {
                             Toast.makeText(getContext(), "empty", Toast.LENGTH_SHORT).show();
                         }
                         else {
-
                             recyclerView.setAdapter(a);
                             recyclerView.setLayoutManager(layoutManager);
                         }
@@ -119,7 +123,6 @@ public class Searched extends Fragment {
 
         return view;
 
+
     }
-
-
 }

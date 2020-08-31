@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.satyam.newswala.R;
 
 public class Account extends Fragment implements View.OnClickListener {
     View view;

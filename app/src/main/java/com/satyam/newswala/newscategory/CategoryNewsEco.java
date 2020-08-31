@@ -1,16 +1,20 @@
-package com.satyam.newswala;
+package com.satyam.newswala.newscategory;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,6 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.data.NewData;
+import com.satyam.newswala.apiKey.News;
+import com.satyam.newswala.R;
+import com.satyam.newswala.adapters.CenterZoomLayoutManager;
+import com.satyam.newswala.adapters.NewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,28 +35,31 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class World extends Fragment {
+public class CategoryNewsEco extends AppCompatActivity {
 
     RequestQueue requestQueue;
     RecyclerView recyclerView;
     ArrayList<String> one,link,web,content,description,publisher;
 
 
-    View view;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_category_news);
 
-         view = inflater.inflate(R.layout.fragment_india, container, false);
-        getActivity().setTitle("World");
-        Bundle bundle = new Bundle();
-        bundle.putInt("newKey",2);
-        recyclerView = view.findViewById(R.id.recyclerView);
+       showToast();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLACK);
+        }
 
-        requestQueue = Volley.newRequestQueue(getContext());
+        recyclerView = findViewById(R.id.newRecycler);
+
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.WORLD, null,
+                News.ECONOMICS, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response)
@@ -58,7 +70,6 @@ public class World extends Fragment {
                         content = new ArrayList<>();
                         description = new ArrayList<>();
                         publisher   = new ArrayList<>();
-
 
                         try
                         {
@@ -71,6 +82,7 @@ public class World extends Fragment {
                                 web.add(jsonObject.getString("url"));
                                 content.add(jsonObject.getString("content"));
                                 description.add(jsonObject.getString("description"));
+
 
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 String one = jsonObject1.getString("source");
@@ -87,16 +99,16 @@ public class World extends Fragment {
                         {
                             e.printStackTrace();
                         }
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
-                                LinearLayoutManager.VERTICAL,false);
-                        adapter a = new adapter(getContext(),link,one,web,content,description,publisher);
+                        CenterZoomLayoutManager centerZoomLayoutManager =
+                                new CenterZoomLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+                         NewAdapter a = new NewAdapter(getApplicationContext(),link,one,web,content,description,publisher);
                         if(a.getItemCount() == 0)
                         {
-                            Toast.makeText(getContext(), "empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "empty", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             recyclerView.setAdapter(a);
-                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setLayoutManager(centerZoomLayoutManager);
                         }
 
 
@@ -117,8 +129,15 @@ public class World extends Fragment {
 
 
 
-        return view;
+    }
 
-
+    public void showToast() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast,(ViewGroup) findViewById(R.id.toast));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }

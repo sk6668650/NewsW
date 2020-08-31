@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+
+import com.satyam.newswala.main.MainActivity;
+import com.satyam.newswala.R;
 
 public class SplashScreen extends AppCompatActivity
 {
@@ -35,7 +38,7 @@ public class SplashScreen extends AppCompatActivity
             @Override
             public void run()
             {
-                Intent i = new Intent(SplashScreen.this,MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(i);
 
                 finish();

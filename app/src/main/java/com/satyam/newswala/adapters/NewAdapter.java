@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.adapters;
 
 
 import android.content.Context;
@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.Resource;
+import com.satyam.newswala.R;
 
 import java.util.ArrayList;
 

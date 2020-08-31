@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".CategoryNews">
+    tools:context=".newscategory.CategoryNews">
 
 
     <androidx.cardview.widget.CardView

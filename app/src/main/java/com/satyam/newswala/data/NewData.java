@@ -1,4 +1,4 @@
-package com.satyam.newswala;
+package com.satyam.newswala.data;
 
 public class NewData {
     public String getName() {

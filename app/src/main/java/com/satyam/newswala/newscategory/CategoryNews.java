@@ -1,4 +1,8 @@
-package com.satyam.newswala;
+package com.satyam.newswala.newscategory;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -12,10 +16,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,6 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.data.NewData;
+import com.satyam.newswala.apiKey.News;
+import com.satyam.newswala.R;
+import com.satyam.newswala.adapters.CenterZoomLayoutManager;
+import com.satyam.newswala.adapters.NewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +35,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CategoryNewsEnter extends AppCompatActivity {
+public class CategoryNews extends AppCompatActivity {
 
     RequestQueue requestQueue;
     RecyclerView recyclerView;
@@ -41,19 +46,20 @@ public class CategoryNewsEnter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_news);
+
         showToast();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.BLACK);
         }
-
         recyclerView = findViewById(R.id.newRecycler);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.ENTERTAINMENT, null,
+                News.SPORTS, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response)
@@ -77,6 +83,7 @@ public class CategoryNewsEnter extends AppCompatActivity {
                                 web.add(jsonObject.getString("url"));
                                 content.add(jsonObject.getString("content"));
                                 description.add(jsonObject.getString("description"));
+
 
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 String one = jsonObject1.getString("source");

@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CategoryNews"></activity>
-        <activity android:name=".CategoryNewsEco"></activity>
-        <activity android:name=".CategoryNewsTech"></activity>
-        <activity android:name=".CategoryNewsPol"></activity>
-        <activity android:name=".CategoryNewsEnter"></activity>
-        <activity android:name=".CategoryNewsSci"></activity>
-        <activity android:name=".FullArticle" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".newscategory.CategoryNews"></activity>
+        <activity android:name=".newscategory.CategoryNewsEco"></activity>
+        <activity android:name=".newscategory.CategoryNewsTech"></activity>
+        <activity android:name=".newscategory.CategoryNewsPol"></activity>
+        <activity android:name=".newscategory.CategoryNewsEnter"></activity>
+        <activity android:name=".newscategory.CategoryNewsSci"></activity>
+        <activity android:name=".fullArticles.FullArticle" />
+        <activity android:name=".splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:windowSoftInputMode="adjustPan" />
 
         <meta-data
