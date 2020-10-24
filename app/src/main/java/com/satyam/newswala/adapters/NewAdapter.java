@@ -3,11 +3,13 @@ package com.satyam.newswala.adapters;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.satyam.newswala.R;
+import com.satyam.newswala.fullArticles.FullArticle;
 
 import java.util.ArrayList;
 
@@ -101,6 +104,20 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.MyViewHolder>
         {
             holder.textView2.setText(ooo4);
         }
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, FullArticle.class);
+                i.putExtra("key1",ooo);
+                i.putExtra("key2",ooo1);
+                i.putExtra("key3",ooo2);
+                i.putExtra("key4",ooo3);
+                i.putExtra("key5",ooo4);
+                i.putExtra("key6",ooo5);
+
+                context.startActivity(i);
+            }
+        });
 
 
 
@@ -119,6 +136,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.MyViewHolder>
     {
         TextView textView,textView1,textView2;
         ImageView imageView;
+        LinearLayout layout;
 
 
         public MyViewHolder(@NonNull View itemView)
@@ -127,6 +145,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.MyViewHolder>
             textView = itemView.findViewById(R.id.catPub);
             textView1 = itemView.findViewById(R.id.catnew);
             textView2 = itemView.findViewById(R.id.catDes);
+            layout    = itemView.findViewById(R.id.newLayout);
             imageView = itemView.findViewById(R.id.categoryImage);
         }
     }
