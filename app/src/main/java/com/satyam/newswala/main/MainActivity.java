@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         chipNavigationBar = findViewById(R.id.nav);
+
         setFragment(new India());
 
 
@@ -176,6 +177,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -262,4 +265,11 @@ public class MainActivity extends AppCompatActivity
         bottomNavigationView.setSelectedItemId(R.id.item1);
     }
 
-}
+
+
+
+    }
+
+
+
+

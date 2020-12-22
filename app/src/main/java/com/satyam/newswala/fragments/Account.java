@@ -13,32 +13,46 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.satyam.newswala.R;
 
 public class Account extends Fragment implements View.OnClickListener {
-    View view;
-    LinearLayout layout1,layout2,layout3,layout4;
+    View view,view1,view2;
+    TextView textView;
+    LinearLayout layout1,layout2,layout3,layout4,layout5;
+    Animation animation;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_account, container, false);
         layout1 = view.findViewById(R.id.linear1);
+        textView = view.findViewById(R.id.animText);
         layout2 = view.findViewById(R.id.linear2);
+        view1 = view.findViewById(R.id.slide1);
+        view2 = view.findViewById(R.id.slide2);
         layout3 = view.findViewById(R.id.linear3);
         layout4 = view.findViewById(R.id.linear4);
+        layout5 = view.findViewById(R.id.login);
         getActivity().setTitle("Account");
         layout1.setOnClickListener(this);
         layout2.setOnClickListener(this);
         layout3.setOnClickListener(this);
         layout4.setOnClickListener(this);
+        layout5.setOnClickListener(this);
         Bundle bundle = new Bundle();
         bundle.putInt("newKey",4);
 
-
+        animation = AnimationUtils.loadAnimation(getContext(),R.anim.fadeout);
+        view2.setAnimation(animation);
+        view1.setAnimation(animation);
+        textView.setAnimation(animation);
 
         return view;
     }
@@ -70,6 +84,10 @@ public class Account extends Fragment implements View.OnClickListener {
         {
 
             openDialog();
+        }else if (v==layout5)
+        {
+            Toast.makeText(getContext(), "This Feature is not Active yet!", Toast.LENGTH_SHORT).show();
+
         }
 
     }
@@ -100,7 +118,7 @@ public class Account extends Fragment implements View.OnClickListener {
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            Log.i("Finished sending email...", "");
+            Log.i("myApp", "Finished sending email...");
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }

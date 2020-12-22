@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.Retrofit;
 import com.satyam.newswala.data.NewData;
 import com.satyam.newswala.apiKey.News;
 import com.satyam.newswala.R;
@@ -37,17 +38,14 @@ import java.util.ArrayList;
 
 public class CategoryNewsEco extends AppCompatActivity {
 
-    RequestQueue requestQueue;
     RecyclerView recyclerView;
-    ArrayList<String> one,link,web,content,description,publisher;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_news);
 
-       showToast();
+        showToast();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -55,78 +53,8 @@ public class CategoryNewsEco extends AppCompatActivity {
         }
 
         recyclerView = findViewById(R.id.newRecycler);
-
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.ECONOMICS, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response)
-                    {
-                        one = new ArrayList<>();
-                        link = new ArrayList<>();
-                        web  = new ArrayList<>();
-                        content = new ArrayList<>();
-                        description = new ArrayList<>();
-                        publisher   = new ArrayList<>();
-
-                        try
-                        {
-                            JSONArray jsonArray = response.getJSONArray("articles");
-                            for(int i = 0;i <  jsonArray.length();i++)
-                            {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                one.add(jsonObject.getString("title"));
-                                link.add(jsonObject.getString("urlToImage"));
-                                web.add(jsonObject.getString("url"));
-                                content.add(jsonObject.getString("content"));
-                                description.add(jsonObject.getString("description"));
-
-
-                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                String one = jsonObject1.getString("source");
-                                Gson gson = new Gson();
-                                NewData newData = gson.fromJson(one,NewData.class);
-                                publisher.add(newData.getName());
-
-                            }
-
-                        }
-
-
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-                        CenterZoomLayoutManager centerZoomLayoutManager =
-                                new CenterZoomLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
-                         NewAdapter a = new NewAdapter(getApplicationContext(),link,one,web,content,description,publisher);
-                        if(a.getItemCount() == 0)
-                        {
-                            Toast.makeText(getApplicationContext(), "empty", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            recyclerView.setAdapter(a);
-                            recyclerView.setLayoutManager(centerZoomLayoutManager);
-                        }
-
-
-                    }
-                },
-
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        Log.d("MyApp","SomeThing Went Wrong");
-                    }
-                });
-
-
-        requestQueue.add(jsonObjectRequest);
-
+        Retrofit retrofit = new Retrofit();
+        retrofit.getNewData(recyclerView,News.ECONOMICS,getApplicationContext());
 
 
     }

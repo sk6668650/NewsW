@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.satyam.newswala.Retrofit;
 import com.satyam.newswala.apiKey.News;
 import com.satyam.newswala.R;
 import com.satyam.newswala.adapters.adapter;
@@ -31,93 +32,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Hot extends Fragment {
-    RequestQueue requestQueue;
     RecyclerView recyclerView;
-    ArrayList<String> one,link,web,content,description,publisher;
-
 
     View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-         view = inflater.inflate(R.layout.fragment_india, container, false);
+        view = inflater.inflate(R.layout.fragment_india, container, false);
         getActivity().setTitle("Hot");
         Bundle bundle = new Bundle();
         bundle.putInt("newKey",3);
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        requestQueue = Volley.newRequestQueue(getContext());
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                News.HOT, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response)
-                    {
-                        one = new ArrayList<>();
-                        link = new ArrayList<>();
-                        web  = new ArrayList<>();
-                        content = new ArrayList<>();
-                        description = new ArrayList<>();
-                        publisher   = new ArrayList<>();
-
-                        try
-                        {
-                            JSONArray jsonArray = response.getJSONArray("articles");
-                            for(int i = 0;i <  jsonArray.length();i++)
-                            {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                one.add(jsonObject.getString("title"));
-                                link.add(jsonObject.getString("urlToImage"));
-                                web.add(jsonObject.getString("url"));
-                                content.add(jsonObject.getString("content"));
-                                description.add(jsonObject.getString("description"));
-
-                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                String one = jsonObject1.getString("source");
-                                Gson gson = new Gson();
-                                NewData newData = gson.fromJson(one,NewData.class);
-                                publisher.add(newData.getName());
-
-
-                            }
-
-                        }
-
-
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
-                                LinearLayoutManager.VERTICAL,false);
-                        adapter a = new adapter(getContext(),link,one,web,content,description,publisher);
-                        if(a.getItemCount() == 0)
-                        {
-                            Toast.makeText(getContext(), "empty", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            recyclerView.setAdapter(a);
-                            recyclerView.setLayoutManager(layoutManager);
-                        }
-
-
-                    }
-                },
-
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        Log.d("MyApp","SomeThing Went Wrong");
-                    }
-                });
-
-
-        requestQueue.add(jsonObjectRequest);
+        Retrofit retrofit = new Retrofit();
+        retrofit.getData(recyclerView,News.HOT,requireActivity());
 
 
         return view;

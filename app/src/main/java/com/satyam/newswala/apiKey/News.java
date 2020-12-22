@@ -2,7 +2,8 @@ package com.satyam.newswala.apiKey;
 
 public class News {
 
-     public static String CATEGORY = "https://newsapi.org/v2/everything?q=";
+    public static String CATEGORY = "https://newsapi.org/v2/everything?q=";
+    public static String CATEGORY1 = "https://newsapi.org/v2/";
     public static String HOT     = "https://newsapi.org/v2/everything?q=global&apiKey=523ed99ebfd74e6bbbcca29b713c1383";
     public static String API_KEY = "&apiKey=523ed99ebfd74e6bbbcca29b713c1383";
     public static String SEARCH  = "";

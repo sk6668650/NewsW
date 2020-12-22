@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -33,7 +34,7 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder>
 
   public adapter(Context c, ArrayList link, ArrayList one,ArrayList url1,ArrayList contt,ArrayList dess,ArrayList publisher) {
 
-    
+
     context = c;
     image   = link;
     title   = one;
@@ -66,7 +67,7 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder>
     final String ooo5 = (String)  pub.get(position);
 
 
-
+/*
     if(image.get(position)==null | des.get(position)==null | cont.get(position)==null)
     {
       holder.cardView.setVisibility(View.GONE);
@@ -74,6 +75,8 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder>
       holder.textView.setText(View.GONE);
       holder.textView2.setVisibility(View.GONE);
     }
+
+ */
 
       holder.textView.setText(ooo);
       holder.textView2.setText(ooo5);
